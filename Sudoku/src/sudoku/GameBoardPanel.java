@@ -3,7 +3,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-public class GameBoardPanel extends JPanel {
+public class GameBoardPanel extends JPanel { 
    private static final long serialVersionUID = 1L;  // to prevent serial warning
 
    // Define named constants for UI sizes

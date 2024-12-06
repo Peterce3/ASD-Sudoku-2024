@@ -45,7 +45,7 @@ public class Cell extends JTextField {
    }
 
    /** This Cell (JTextField) paints itself based on its status */
-   public void paint() {
+   public void paint() { 
       if (status == CellStatus.GIVEN) {
          // Inherited from JTextField: Set display properties
          super.setText(number + "");

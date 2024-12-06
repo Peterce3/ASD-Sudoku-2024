@@ -2,7 +2,7 @@ package sudoku;
 /**
  * The Sudoku number puzzle to be solved
  */
-public class Puzzle {
+public class Puzzle { 
    // All variables have package access
    // The numbers on the puzzle
    int[][] numbers = new int[SudokuConstants.GRID_SIZE][SudokuConstants.GRID_SIZE];
