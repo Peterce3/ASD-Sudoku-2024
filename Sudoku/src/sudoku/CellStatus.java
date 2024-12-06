@@ -1,3 +1,10 @@
+/**
+ * ES234317-Algorithm and Data Structures
+ * Semester Ganjil, 2024/2025
+ * Group Capstone Project
+ * Group #17
+ * 1 - 5026231138 - Peter Christian Erastus
+ */
 package sudoku;
 /**
  * An enumeration of constants to represent the status
