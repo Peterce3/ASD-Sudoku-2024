@@ -78,9 +78,9 @@ public class GameBoardPanel extends JPanel {
    }
 
    // [TODO 2] Define a Listener Inner Class for all the editable Cells
-   private class CellInputListener implements ChangeListener {
+   private class CellInputListener implements ActionListener {
       @Override
-      public void stateChanged(ChangeEvent e) {
+      public void actionPerformed(ActionEvent e) {
          // Get a reference of the JTextField that triggers this action event
          Cell sourceCell = (Cell)e.getSource();
 		 
