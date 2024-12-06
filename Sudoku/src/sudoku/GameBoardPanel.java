@@ -21,9 +21,10 @@ public class GameBoardPanel extends JPanel {
 
    // Define properties
    /** The game board composes of 9x9 Cells (customized JTextFields) */
-   private Cell[][] cells = new Cell[SudokuConstants.GRID_SIZE][SudokuConstants.GRID_SIZE];
+   private static Cell[][] cells = new Cell[SudokuConstants.GRID_SIZE][SudokuConstants.GRID_SIZE];
    /** It also contains a Puzzle with array numbers and isGiven */
    private Puzzle puzzle = new Puzzle();
+   static int[][] input = new int[SudokuConstants.GRID_SIZE][SudokuConstants.GRID_SIZE];
 
    /** Constructor */
    public GameBoardPanel() {
@@ -35,6 +36,12 @@ public class GameBoardPanel extends JPanel {
             cells[row][col] = new Cell(row, col);
             super.add(cells[row][col]);   // JPanel
          }
+      }
+      
+      for (int row = 0; row < SudokuConstants.GRID_SIZE; ++row) {
+          for (int col = 0; col < SudokuConstants.GRID_SIZE; ++col) {
+        	  input[row][col]=0;
+          }
       }
 
       // [TODO 3] Allocate a common listener as the ActionEvent listener for all the
@@ -83,6 +90,10 @@ public class GameBoardPanel extends JPanel {
       }
       return true;
    }
+   
+   public static Cell[][] getCells(){
+	   return cells;
+   }
 
    // [TODO 2] Define a Listener Inner Class for all the editable Cells
    private class CellInputListener implements KeyListener {
@@ -106,13 +117,8 @@ public class GameBoardPanel extends JPanel {
               * Update the cell status sourceCell.status,
               * and re-paint the cell via sourceCell.paint().
               */
-             if (numberIn == sourceCell.number) {
-            	 sourceCell.status = CellStatus.CORRECT_GUESS;
-             } else {
-            	 sourceCell.status = CellStatus.WRONG_GUESS;
-             }
-             sourceCell.paint();   // re-paint this cell based on its status
-
+             input[sourceCell.row][sourceCell.col]=numberIn;
+             
              /*
               * [TODO 6] (later)
               * Check if the player has solved the puzzle after this move,

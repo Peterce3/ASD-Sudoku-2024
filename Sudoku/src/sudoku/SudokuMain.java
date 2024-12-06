@@ -20,6 +20,7 @@ public class SudokuMain extends JFrame {
    // private variables
    GameBoardPanel board = new GameBoardPanel();
    JButton btnNewGame = new JButton("New Game");
+   JButton btnCheck = new JButton("Check");
 
    // Constructor
    public SudokuMain() {
@@ -27,7 +28,8 @@ public class SudokuMain extends JFrame {
       cp.setLayout(new BorderLayout());
 
       cp.add(board, BorderLayout.CENTER);
-      cp.add(btnNewGame, BorderLayout.SOUTH);
+      cp.add(btnCheck, BorderLayout.SOUTH);
+      cp.add(btnNewGame, BorderLayout.NORTH);
 
       // Add a button to the south to re-start the game via board.newGame()
       // ......
@@ -40,6 +42,23 @@ public class SudokuMain extends JFrame {
     	        board.newGame();
     	    }
     	});
+      
+      btnCheck.addActionListener(new ActionListener() {
+    	  @Override
+    	  public void actionPerformed(ActionEvent evt) {
+    	      for (int row = 0; row < SudokuConstants.GRID_SIZE; ++row) {
+    	          for (int col = 0; col < SudokuConstants.GRID_SIZE; ++col) {
+    	        	  if (GameBoardPanel.input[row][col]==GameBoardPanel.getCells()[row][col].number&&GameBoardPanel.input[row][col]!=0) {
+    	        		  GameBoardPanel.getCells()[row][col].status = CellStatus.CORRECT_GUESS;
+    	        		  GameBoardPanel.getCells()[row][col].paint();   // re-paint this cell based on its status
+    	              } else if(GameBoardPanel.input[row][col]!=GameBoardPanel.getCells()[row][col].number&&GameBoardPanel.input[row][col]!=0 ){
+    	            	  GameBoardPanel.getCells()[row][col].status = CellStatus.WRONG_GUESS;
+    	            	  GameBoardPanel.getCells()[row][col].paint();   // re-paint this cell based on its status
+    	              }
+    	          }
+    	       }
+    	  }
+      });
 
       pack();     // Pack the UI components, instead of using setSize()
       setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  // to handle window-closing
