@@ -62,6 +62,6 @@ public class Cell extends JTextField {
          super.setBackground(BG_CORRECT_GUESS);
       } else if (status == CellStatus.WRONG_GUESS) {    // from TO_GUESS
          super.setBackground(BG_WRONG_GUESS);
-      }
+      } 
    }
 }
