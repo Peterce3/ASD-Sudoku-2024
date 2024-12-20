@@ -55,6 +55,10 @@ public class SudokuMain extends JFrame {
     	            	  GameBoardPanel.getCells()[row][col].status = CellStatus.WRONG_GUESS;
     	            	  GameBoardPanel.getCells()[row][col].paint();   // re-paint this cell based on its status
     	              }
+    	              if (GameBoardPanel.isSolved()) {
+    	             	 JOptionPane.showMessageDialog(null, "Congratulations!");
+    	             	 return;
+    	              }
     	          }
     	       }
     	  }

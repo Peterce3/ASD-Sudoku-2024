@@ -80,7 +80,7 @@ public class GameBoardPanel extends JPanel {
     * Return true if the puzzle is solved
     * i.e., none of the cell have status of TO_GUESS or WRONG_GUESS
     */
-   public boolean isSolved() {
+   public static boolean isSolved() {
       for (int row = 0; row < SudokuConstants.GRID_SIZE; ++row) {
          for (int col = 0; col < SudokuConstants.GRID_SIZE; ++col) {
             if (cells[row][col].status == CellStatus.TO_GUESS || cells[row][col].status == CellStatus.WRONG_GUESS) {
@@ -124,9 +124,6 @@ public class GameBoardPanel extends JPanel {
               * Check if the player has solved the puzzle after this move,
               *   by calling isSolved(). Put up a congratulation JOptionPane, if so.
               */
-             if (isSolved()) {
-            	 JOptionPane.showMessageDialog(null, "Congratulations!");
-             }
          } else {
         	 e.consume();
          } 
